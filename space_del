@@ -1,0 +1,18 @@
+/*Удаление лишних пробелов в строке*/
+/* https://www.sql.ru/forum/88473/kak-ostavit-tolko-odin-probel-mezhdu-slovami#643244*/
+create table t17(name varchar2(30));
+insert into t17 values ('aa    bb         cc');
+insert into t17 values ('aa  bb  cc');
+insert into t17 values ('aa           bb             cc');
+commit;
+
+select
+replace(replace(replace(name, ' ', ' _'), '_ '), '_') d
+from t17;
+
+D
+------------------------
+
+aa bb cc
+aa bb cc
+aa bb cc
